@@ -1,38 +1,25 @@
 sudo: required
 dist: trusty
 group: edge
-
 language: node_js
 node_js:
-  - 8.6.0
-
+- 8.6.0
 cache:
   directories:
   - node_modules
   - ".tools"
-
 install:
 - chmod +x build/*.sh
-
 before_script:
 - eval "$(gimme 1.10.2)"
-
 script:
 - "./node_modules/.bin/gulp build:cross"
-
 before_deploy:
-- "mv ./dist/windows/k8sconsole-windows-amd64 ./dist/windows/k8sconsole-windows-amd64.exe"
-
+- mv ./dist/windows/k8sconsole-windows-amd64 ./dist/windows/k8sconsole-windows-amd64.exe
 deploy:
   provider: releases
   api_key:
-    secure: b59dc257eb7622e41e395310fc0c0a4152b70553
-  file:
-    - ./dist/linux/k8sconsole-linux-amd64
-    - ./dist/windows/k8sconsole-windows-amd64.exe
-    - ./dist/darwin/k8sconsole-darwin-amd64
-  skip_cleanup: true
+    secure: QjlxuCSb7RgKMjdQrEHLuiycitiS/HVxNZ/5JZXZQDxl2OlAH9QksXJNxqi/dyTS4qXxZyzUzxjpEtFDgHWZakChmD9EK4ssTWR6eNj1AJ7Fc0U0uoZRihA8hGcHBKLujfWUYId2ZB2ZPOfTYAUX/sj5D7GyldN3cNOnTW+9NE3eLk/xUAJL6PWPWylGN3vP3v84r5rGukuwPpPqA/Hld9bVlP8uPHyQN9S73Ilxv5MStUVMMfJrPyKT9yacEbZnvKqmfnSkqi8MQJ2EpPqHtTLJ88cDKYvtuzapQX+7msfRaQu+rXrA8aB/39TGJVKeTqprfO2xQ0jVq/uKf9qbIIr0gPcoewhTWtWty6L2Y25ljP5VHaY84f4QcEJUqTCkaf3AanztrIv7WtRkvRVeoWxU5sRYC6/Hs7DGJog2AW1L6RluiCmkPnFaHJMPCVvqI3HVdYiyGq3+h7xFah1Cokj87fBtyvvSI/71Z2m1/q74/JwuoKTjui5RTt3vNRHJNZUE1IseIMONpCBvvoIsOF2RYi2RrNWtfDrlIsTvB020IEP7qBD7v+DYy8ugtZOdJwyKmIx3xFyaWMB0h3vrWc+F86bC/Iqa90+Hd2tKC69cMetgqtVaTjueaXoPzkj27C99AT7zVNKt9wLikLrd1LCmYG/dRg5Hf9wczSHa2HU=
+  file: ''
   on:
-    repo: hbulpf/k8sconsole
-    tags: true
-
+    repo: RunAtWorld/k8sconsole
